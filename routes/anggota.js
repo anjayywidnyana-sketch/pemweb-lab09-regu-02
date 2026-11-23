@@ -22,11 +22,28 @@ const anggota = [
     }
 ];
 
+// GET semua data anggota
 router.get('/', (req, res) => {
     res.json({
         success: true,
         message: 'Data anggota berhasil ditampilkan',
         data: anggota
+    });
+});
+
+// GET pencarian anggota berdasarkan nama atau NIM
+router.get('/cari', (req, res) => {
+    const keyword = (req.query.keyword || '').toLowerCase();
+
+    const hasil = anggota.filter(item =>
+        item.nama.toLowerCase().includes(keyword) ||
+        item.nim.includes(keyword)
+    );
+
+    res.json({
+        success: true,
+        message: 'Hasil pencarian anggota',
+        data: hasil
     });
 });
 
