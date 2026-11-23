@@ -13,17 +13,22 @@ const APP_NAME = process.env.APP_NAME || 'Portal Katalog TI';
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Halaman utama
 app.get('/', (req, res) => {
     res.json({
         message: `Selamat datang di ${APP_NAME}`,
-        status:  'Server aktif - Versi B',
+        status: 'Server aktif - Konflik berhasil diselesaikan',
         version: '1.0.0'
     });
 });
 
+// Route Modul Buku
 app.use('/api/buku', bukuRoutes);
+
+// Route Modul Anggota
 app.use('/api/anggota', anggotaRoutes);
 
+// Menjalankan server
 app.listen(PORT, () => {
     console.log(`${APP_NAME} berjalan di http://localhost:${PORT}`);
 });
