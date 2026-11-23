@@ -16,11 +16,29 @@ const buku = [
     }
 ];
 
+// GET semua data buku
 router.get('/', (req, res) => {
     res.json({
         success: true,
         message: 'Data buku berhasil ditampilkan',
         data: buku
+    });
+});
+
+// GET pencarian buku berdasarkan judul
+router.get('/cari', (req, res) => {
+    const keyword = req.query.judul;
+
+    const hasil = buku.filter(item =>
+        item.judul.toLowerCase().includes(
+            (keyword || '').toLowerCase()
+        )
+    );
+
+    res.json({
+        success: true,
+        message: 'Hasil pencarian buku',
+        data: hasil
     });
 });
 
