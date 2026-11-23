@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 app.get('/', (req, res) => {
     res.json({
         message: `Selamat datang di ${APP_NAME}`,
-        status: 'Server berjalan',
+        status: 'Server aktif - Versi A',
         version: '1.0.0'
     });
 });
